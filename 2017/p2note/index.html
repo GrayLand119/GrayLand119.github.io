@@ -1,0 +1,611 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>Python 2 学习笔记 | GrayLand's blogs</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><script><!-- hexo-inject:begin --><!-- hexo-inject:end -->var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = 'https://hm.baidu.com/hm.js?' + '23b02fe43688a2403eb3b2033320103d';
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+  })();</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Python 2 学习笔记</h1><a id="logo" href="/.">GrayLand's blogs</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Python 2 学习笔记</h1><div class="post-meta">Jun 6, 2017</div><div class="post-content"><!--# Python 2 学习笔记-->
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><h3 id="常用指令"><a class="markdownIt-Anchor" href="#常用指令"></a> 常用指令</h3>
+<ul>
+<li>print 打印</li>
+<li>id 显示内存地址</li>
+<li>help 帮助</li>
+<li>div</li>
+<li>type</li>
+</ul>
+<h3 id="整数溢出"><a class="markdownIt-Anchor" href="#整数溢出"></a> 整数溢出</h3>
+<p>利用模块解决除法和编码格式（支持中文）的方法</p>
+<h3 id="引入模块"><a class="markdownIt-Anchor" href="#引入模块"></a> 引入模块</h3>
+<ol>
+<li>import math</li>
+<li>from xxxx1 import xxxx2 //  xxxx2是xxxx1大模块中的小模块</li>
+</ol>
+<h3 id="数和四则运算"><a class="markdownIt-Anchor" href="#数和四则运算"></a> 数和四则运算</h3>
+<p>divmod(5,2) 5 % 2 模</p>
+<p>round(2.222) 四舍五入</p>
+<h3 id="字符串"><a class="markdownIt-Anchor" href="#字符串"></a> 字符串</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&gt; &quot;Py&quot; + &quot;thon&quot;</span><br><span class="line"></span><br><span class="line">&gt; a = 1234</span><br><span class="line">  print &quot;hehe&quot; + `a` // 引号是1旁边的那个` </span><br><span class="line">  print &quot;hehe&quot; + str(a)</span><br><span class="line">  print &quot;hehe&quot; + repr(a) // repr() is a function instead of ``</span><br><span class="line">  </span><br><span class="line">&gt; name = raw_input(&quot;input your name:&quot;)</span><br><span class="line"></span><br><span class="line">&gt; a = 10; b = 20</span><br><span class="line">&gt; print a,b</span><br><span class="line"></span><br><span class="line">&gt; c = &quot;C:\news&quot;</span><br><span class="line">&gt; print c</span><br><span class="line">&gt; print r&quot;C:\news&quot;</span><br><span class="line"></span><br><span class="line">&gt; ord(&apos;b&apos;) // 98</span><br><span class="line">&gt; chr(98) // &apos;b&apos;</span><br><span class="line"></span><br><span class="line">&gt; c = &quot;abc&quot;</span><br><span class="line">&gt; c * 3 // &apos;abcabcabc&apos;</span><br><span class="line">&gt; &quot;+&quot; * 20 // out put 20 &apos;+&apos;</span><br></pre></td></tr></table></figure>
+<p>raw_input(…) <br></p>
+<p>raw_input([prompt]) -&gt; string <br><br>
+Read a string from standard input. The trailing newline is stripped.<br><br>
+If the user hits EOF (Unix: Ctl-D, Windows: Ctl-Z+Return), raise EOFError.<br><br>
+On Unix, GNU readline is used if enabled. The prompt string, if given,<br>
+is printed without a trailing newline before reading. <br></p>
+<h3 id="基本操作"><a class="markdownIt-Anchor" href="#基本操作"></a> 基本操作</h3>
+<ol>
+<li>len()</li>
+<li>in // return False or Ture</li>
+<li>max()</li>
+<li>min()</li>
+<li>cmp(str1,str2) // same is 0, less is -1 , bigger is 1</li>
+<li>
+<ul>
+<li></li>
+</ul>
+</li>
+</ol>
+<h3 id="格式化输出"><a class="markdownIt-Anchor" href="#格式化输出"></a> 格式化输出</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; a = &quot;grayland&quot;</span><br><span class="line">&gt; &quot;my name is %s&quot; % a</span><br><span class="line">&gt; &quot;my name is &#123;&#125;&quot;.format(a)</span><br><span class="line">&gt; &quot;my name is &#123;name&#125;, age is &#123;age&#125;&quot;.format(name=a, age=27) // 推荐</span><br><span class="line">&gt; &quot;my name is %(name)s&quot;%&#123;&quot;name&quot;:a&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="常用方法"><a class="markdownIt-Anchor" href="#常用方法"></a> 常用方法</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt; a = &quot;my name is grayland&quot;</span><br><span class="line">&gt; a.split(&quot; &quot;) // return a list, 反过来是 join</span><br><span class="line"></span><br><span class="line">&gt; a.strip() // 去掉左右空格</span><br><span class="line">&gt; a.lstrip(), a.rstrip()</span><br><span class="line"></span><br><span class="line">&gt; a.upper()</span><br><span class="line">&gt; a.lower()</span><br><span class="line">&gt; a.capitalize() // First character uppper</span><br><span class="line">&gt; a.isupper()</span><br><span class="line">&gt; a.islower()</span><br><span class="line">&gt; a.istitle()</span><br></pre></td></tr></table></figure>
+<h2 id="python-避免中文是乱码"><a class="markdownIt-Anchor" href="#python-避免中文是乱码"></a> Python 避免中文是乱码</h2>
+<ol>
+<li># -<em>- coding: utf-8 -</em>- // -*- 没有用</li>
+<li># coding:utf-8</li>
+<li>unicode_str = unicode(‘中文’, encoding=‘utf-8’) // 遇到字符(节)串，立刻转化为 unicode，不要用 str()，直接使用 unicode()</li>
+<li>import codecs<br><br>
+codecs.open(‘filename’, encoding=‘utf8’) <br>遇到字符(节)串，立刻转化为 unicode，不要用 str()，直接使用 unicode()</li>
+</ol>
+<h2 id="索引和切片"><a class="markdownIt-Anchor" href="#索引和切片"></a> 索引和切片</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&gt; a = &quot;python&quot;</span><br><span class="line">  a[0]</span><br><span class="line">  // p</span><br><span class="line">  a[1]</span><br><span class="line">  // y</span><br><span class="line">  a.index(&quot;p&quot;)</span><br><span class="line">  // 0</span><br><span class="line">  a[1:3]</span><br><span class="line">  // &apos;yt&apos;</span><br><span class="line">  a[1:99999]</span><br><span class="line">  a[1:] // index 1 to end</span><br><span class="line">  a[:] // get all</span><br><span class="line">  a[:3] // first to 3</span><br></pre></td></tr></table></figure>
+<h2 id="列表-list"><a class="markdownIt-Anchor" href="#列表-list"></a> 列表 List</h2>
+<p>相当于 NSArray. 列表可以无限大.</p>
+<ul>
+<li>insert(index, obj)</li>
+<li>append 添加元素 listA.append(obj), obj必须是 iterable 可迭代的.</li>
+<li>extend 扩展 listA.extend(listB)</li>
+<li>remove(obj) only remove the first object, if obj not exist cause an error.</li>
+<li>pop(index) if index not exist , then remove the last.</li>
+<li>reverse()</li>
+<li>sort()</li>
+<li>
+<ul>
+<li>same as extend</li>
+</ul>
+</li>
+</ul>
+<p>list str 转化:</p>
+<ul>
+<li>split</li>
+<li>join</li>
+</ul>
+<p>判断对象是否可迭代:<br><br>
+判断其属性有 '<strong>iter</strong>’属性<br></p>
+<blockquote>
+<p>hasattr(obj, ‘<strong>iter</strong>’) // Trure or False</p>
+</blockquote>
+<h2 id="元组-tuple"><a class="markdownIt-Anchor" href="#元组-tuple"></a> 元组 tuple</h2>
+<p>元组是用圆括号括起来的，其中的元素之间用逗号隔开。<br><br>
+元组中的元素类型是任意的 Python 数据。<br><br>
+元组不能修改, list 和 str 的融合产物</p>
+<ul>
+<li>tuple 操作比 list 快.</li>
+<li>不能修改数据, 安全</li>
+<li>tuple 可以用作 key,list 不可以</li>
+<li>tuple 可以用在字符串格式化总</li>
+</ul>
+<blockquote>
+<p>a = 111,222,‘ccc’ // then a is tuple</p>
+</blockquote>
+<p>元组可以用于格式化:</p>
+<blockquote>
+<p>“my name is %s, age is %d”%(“grayland”, 27)</p>
+</blockquote>
+<h2 id="字段-dict"><a class="markdownIt-Anchor" href="#字段-dict"></a> 字段 dict</h2>
+<p>创建字典:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; dictA = &#123;&#125;</span><br><span class="line">&gt; dictA = &#123;&apos;key&apos;=&apos;value&apos;&#125;</span><br><span class="line">&gt; dictA[&apos;key&apos;] = &apos;value&apos;</span><br><span class="line">&gt; dictA = dict(([&apos;key1&apos;:&apos;value1&apos;], [&apos;key2&apos;:&apos;value2&apos;])) // 利用元组构造</span><br><span class="line">&gt; dictA = dict(key=&apos;value&apos;,key2=&apos;value&apos;)</span><br><span class="line">&gt; dictA = &#123;&#125;.formkeys((&apos;key1&apos;,&apos;key2&apos;), &apos;value&apos;)</span><br></pre></td></tr></table></figure>
+<p>访问字典:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; D = &#123;&apos;name&apos;:&apos;grayland, &apos;age&apos;:27&#125;</span><br><span class="line">&gt; D[&apos;gender&apos;] // Error</span><br><span class="line">&gt; D.get(&apos;gender&apos;) // get nothing</span><br></pre></td></tr></table></figure>
+<p>其他方法:</p>
+<ul>
+<li>len(dictX) // get the num of key-value.</li>
+<li>del d[key] // delete the key-value pair in the dict ‘d’.</li>
+<li>key in d</li>
+<li>copy // a = b.copy(), <strong>import copy, can use copy.deepcopy(obj)</strong></li>
+<li>clear()-&gt;None // Remove all items</li>
+<li>get(key)</li>
+<li>get(key, default) // If key no exist, return default.</li>
+<li>setdefault() // as get(key,default), but if key not exist then add to de dict</li>
+<li>items() // return list[(tuple), (tuple), …]</li>
+<li>pop(key)</li>
+<li>popitems() // Random to pop 1 key-value pair</li>
+<li>update(dictX) // Cover with dictX</li>
+<li>has_key(key)</li>
+</ul>
+<p>字符串格式化输出:</p>
+<blockquote>
+<p>“my name is %(key)s” % {‘key’:‘value’} // &gt;&gt; ‘my name is value’</p>
+</blockquote>
+<h2 id="集合-set"><a class="markdownIt-Anchor" href="#集合-set"></a> 集合 Set</h2>
+<p>无序，不重复.<br><br>
+tuple 类似 list 和 str 的集合. <br><br>
+set 类似 list 和 dict 的集合.<br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; s1 = set(&apos;abcdefff&apos;)</span><br><span class="line">  set([&apos;a&apos;, &apos;c&apos;, &apos;b&apos;, &apos;e&apos;, &apos;d&apos;, &apos;f&apos;]) // It haven&apos;t repeat element</span><br><span class="line">  s1 = &#123;&apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;d&apos;,&apos;e&apos;,&apos;f&apos;,&apos;f&apos;,&apos;f&apos;&#125; same as set(...)</span><br></pre></td></tr></table></figure>
+<p>其他:</p>
+<blockquote>
+<p>add(obj)<br>
+pop()<br>
+remove(obj)<br>
+discard(obj) // same as remove(obj), but if not exist do nothing.<br>
+clear()<br>
+issubset(setB)<br>
+|<br>
+&amp;<br>
+diffenece(setB) // 取反</p>
+</blockquote>
+<h2 id="语句"><a class="markdownIt-Anchor" href="#语句"></a> 语句</h2>
+<p>print obj, // 用在循环中, 不换行. 否则换行</p>
+<h3 id="import"><a class="markdownIt-Anchor" href="#import"></a> import</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt; import math</span><br><span class="line"></span><br><span class="line">&gt; from math import pow</span><br><span class="line"></span><br><span class="line">&gt; from math import pow as pingfang</span><br><span class="line"></span><br><span class="line">&gt; from math import pow, e, pi</span><br><span class="line"></span><br><span class="line">&gt; from math import *</span><br></pre></td></tr></table></figure>
+<h3 id="赋值语句"><a class="markdownIt-Anchor" href="#赋值语句"></a> 赋值语句</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; x,y,z = 1,2,3</span><br><span class="line">&gt; x = 1,2,3</span><br><span class="line">&gt; x,y = y,x // 相当于 a=x;x=y;y=a; 实现对调</span><br><span class="line">&gt; x = y = 123 // 链式赋值, x = 123, y = 123 , 指向同一个地址.</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="条件语句"><a class="markdownIt-Anchor" href="#条件语句"></a> 条件语句</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// If/else/elif</span><br><span class="line">// 必须通过缩进方式来表示语句块的开始和结束.</span><br><span class="line">// 缩进使用四个空格</span><br><span class="line">if xxx in xxxx:</span><br><span class="line">...</span><br><span class="line">elif:</span><br><span class="line">...</span><br><span class="line">else:</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h3 id="while"><a class="markdownIt-Anchor" href="#while"></a> while</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// while ...</span><br><span class="line">while True:</span><br><span class="line">	if a:</span><br><span class="line">		break</span><br><span class="line"></span><br><span class="line">//while...else</span><br><span class="line">while ...:</span><br><span class="line">	...</span><br><span class="line">else:</span><br><span class="line">	...</span><br><span class="line"></span><br><span class="line">// for...else</span><br><span class="line">for ... in ...:</span><br><span class="line">	...</span><br><span class="line">else:</span><br><span class="line">	...</span><br></pre></td></tr></table></figure>
+<h3 id="三元操作符"><a class="markdownIt-Anchor" href="#三元操作符"></a> 三元操作符</h3>
+<blockquote>
+<p>a = y if x else z // 如果 x is True return y else return z.</p>
+</blockquote>
+<h3 id="循环"><a class="markdownIt-Anchor" href="#循环"></a> 循环</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; for i in &quot;hello&quot;:</span><br><span class="line">&gt; for i in listA:</span><br><span class="line">&gt; for i in range(start, stop, step)</span><br><span class="line">&gt; for key in dictA:</span><br><span class="line">&gt; for k,v in dictA.items():</span><br><span class="line">&gt; for k,v in dictA.iteritems():</span><br></pre></td></tr></table></figure>
+<h3 id="并行迭代"><a class="markdownIt-Anchor" href="#并行迭代"></a> 并行迭代</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; a = [1,2,3,4,5]</span><br><span class="line">&gt; b = [9,8,7,6,5]</span><br><span class="line">&gt; // 求 ab 每项的和</span><br><span class="line">&gt; for i in range(len(a)):</span><br><span class="line">&gt;     c.append(a[i]+b[i])</span><br><span class="line">&gt; // c = [10,10,10,10,10]</span><br><span class="line">&gt; </span><br><span class="line">&gt; for x,y in zip(a,b):</span><br><span class="line">&gt;     c.append(x+y)</span><br><span class="line">&gt; // c = [10,10,10,10,10]</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<p>enumerate(listA) -&gt; (index, listA[index])<br>
+enumerate(listA, start=10) -&gt; (index+10, listA[index])</p>
+<h3 id="list-解析"><a class="markdownIt-Anchor" href="#list-解析"></a> list 解析</h3>
+<p>for i in range(1,4):<br>
+a.append(i**2)</p>
+<p>&gt; [1,4,9]</p>
+<p>list 解析:<br>
+a = [x**2 for x in range(1,4)]</p>
+<p>&gt; a = [1,4,9]</p>
+<h2 id="打开文件"><a class="markdownIt-Anchor" href="#打开文件"></a> 打开文件</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt; f = open(&quot;xxx.txt&quot;)</span><br><span class="line">&gt; for line in f:</span><br><span class="line">&gt; 	print line,</span><br><span class="line"></span><br><span class="line">// f 类型是 file</span><br><span class="line">// 此时 f 已经到了文件的末尾, 再遍历将不会输出东西. </span><br><span class="line">// close() 关闭并保存</span><br><span class="line"></span><br><span class="line">with ... as ...: // 可以实现保存</span><br></pre></td></tr></table></figure>
+<h2 id="文件状态"><a class="markdownIt-Anchor" href="#文件状态"></a> 文件状态</h2>
+<p>import os</p>
+<p>os 模块中有 文件状态的方法 stat(path)</p>
+<p>import time // 时间相关模块</p>
+<h3 id="readreadlinereadlines"><a class="markdownIt-Anchor" href="#readreadlinereadlines"></a> read/readline/readlines</h3>
+<h4 id="read"><a class="markdownIt-Anchor" href="#read"></a> read:</h4>
+<p>read([size]) -&gt; read at most size bytes, returned as a string.</p>
+<p>If the size argument is negative or omitted, read until EOF is reached. Notice that when in non-blocking mode, less data than what was requested may be returned, even if no size parameter was given.</p>
+<h4 id="readline"><a class="markdownIt-Anchor" href="#readline"></a> readline:</h4>
+<p>readline([size]) -&gt; next line from the file, as a string.</p>
+<p>Retain newline. A non-negative size argument limits the maximum number of bytes to return (an incomplete line may be returned then). Return an empty string at EOF.</p>
+<h4 id="readlines"><a class="markdownIt-Anchor" href="#readlines"></a> readlines:</h4>
+<p>readlines([size]) -&gt; list of strings, each a line from the file.</p>
+<p>Call readline() repeatedly and return a list of the lines so read.<br>
+The optional size argument, if given, is an approximate bound on the total number of bytes in the lines returned.</p>
+<ul>
+<li>seek(offset, whence) // whence default = 0, <br>0 - offset from begin offset must be positive +<br>1 - offset from current, offset should be positive/nagative +/-<br> 2 - offset from the end, offset must be nagative. -</li>
+<li>tell() // get current position</li>
+</ul>
+<h2 id="迭代"><a class="markdownIt-Anchor" href="#迭代"></a> 迭代</h2>
+<h3 id="逐个访问"><a class="markdownIt-Anchor" href="#逐个访问"></a> 逐个访问</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; lst = [&apos;g&apos;, &apos;r&apos;, &apos;a&apos;, &apos;y&apos;, &apos;l&apos;, &apos;a&apos;, &apos;n&apos;, &apos;d&apos;]</span><br><span class="line"></span><br><span class="line">&gt; for s in lst:</span><br><span class="line">&gt; </span><br><span class="line">&gt; lst_iter = iter(lst)</span><br><span class="line">&gt; lst_iter.next()</span><br><span class="line">&gt; lst_iter.next()</span><br><span class="line">&gt; lst_iter.next()</span><br><span class="line">&gt; ...</span><br><span class="line">&gt; </span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="文件迭代器"><a class="markdownIt-Anchor" href="#文件迭代器"></a> 文件迭代器</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; f = open(...)</span><br><span class="line">&gt; f.readline() </span><br><span class="line">&gt; f.next()</span><br><span class="line">&gt; is same.</span><br><span class="line">&gt; </span><br><span class="line">&gt; listA = list(open(...)) // 可以获得文件的内容</span><br><span class="line">&gt; tupleA = tuple(open(...))</span><br><span class="line">&gt; </span><br><span class="line">&gt; &quot;stringAppend&quot;.join(open(...)) // file.readline-&gt;append(..&gt;) then join</span><br><span class="line">&gt; a,b,c,d,e = open(...) // a,b,c,d,e 分别赋值 file.readline()</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="自省"><a class="markdownIt-Anchor" href="#自省"></a> 自省</h2>
+<ol>
+<li>help() 进入 help 模式</li>
+<li>help(…)</li>
+<li>dir(…)</li>
+<li>__doc__</li>
+<li>__builtins__</li>
+<li>callable() 测试函数可调用性</li>
+<li>isinstance(‘strxxxxx’, str) -&gt; True</li>
+<li>issubclass(classB, classA) -&gt; BOOL</li>
+</ol>
+<h2 id="函数"><a class="markdownIt-Anchor" href="#函数"></a> 函数</h2>
+<p>f(x) = ax + b</p>
+<p>…</p>
+<p><strong>变量本质上是一个占位符</strong></p>
+<h3 id="定义"><a class="markdownIt-Anchor" href="#定义"></a> 定义</h3>
+<p><strong>def func(inputA, inputB,…):</strong></p>
+<p><strong>def func(X=default,Y=default):</strong></p>
+<p>*<em>def func(a,<em>arg):</em></em> // *arg表示多个可变参数 (tuple 类型传递)</p>
+<p>变量无类型,对象有类型</p>
+<p>Python 中为对象编写接口,而不是为数据类型</p>
+<h3 id="命名"><a class="markdownIt-Anchor" href="#命名"></a> 命名</h3>
+<ul>
+<li>文件名:全小写,可以使用下划线</li>
+<li>函数名:小写,可以用下划线风格增加可读性 或 类似myFunction这样的驼峰命名法</li>
+<li>变量:全小写</li>
+</ul>
+<h3 id="文档"><a class="markdownIt-Anchor" href="#文档"></a> 文档</h3>
+<p>#: 注释</p>
+<p>“”&quot; … “”&quot;: 三个引号包围表示文档, 可以用 __doc__ 查看</p>
+<h3 id="传值方式"><a class="markdownIt-Anchor" href="#传值方式"></a> 传值方式</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; def funA(a,b):</span><br><span class="line">&gt; funA(1,2)</span><br><span class="line">&gt; input = (1,2)</span><br><span class="line">&gt; funA(input) // 元组参数</span><br><span class="line">&gt; </span><br><span class="line">&gt; funB(**dict) // 字典参数</span><br><span class="line">&gt; func(*args) // 可变参数</span><br></pre></td></tr></table></figure>
+<h3 id="特殊函数"><a class="markdownIt-Anchor" href="#特殊函数"></a> 特殊函数</h3>
+<ul>
+<li>filter(func, seq) // func(x)-&gt;bool</li>
+<li>map(func, seq) // excute func(x) in seq</li>
+<li>reduce(func, seq) // func(func(func(0,1),2),3),…</li>
+<li>lambda // lambda input:output</li>
+<li>yield</li>
+</ul>
+<p>lambda:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&gt; nums = range(10)</span><br><span class="line">&gt; [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span><br><span class="line">所有数+3</span><br><span class="line">// Normal:</span><br><span class="line">&gt; result = [i+3 for i in nums]</span><br><span class="line">// lambda:</span><br><span class="line">&gt; lam = lambda x:x+3</span><br><span class="line">&gt; for i in numbers:</span><br><span class="line">&gt;     result.append(lam(i))</span><br><span class="line">// map:</span><br><span class="line">&gt; def add(x):</span><br><span class="line">&gt; ...</span><br><span class="line">&gt; map(add,nums)</span><br><span class="line">// filter: </span><br><span class="line">// 过滤大于5的数</span><br><span class="line">&gt; [x for x in nums if x&gt;5] // Mathod1</span><br><span class="line">&gt; filter(lambda x:x&gt;5, nums) // Mathod2</span><br></pre></td></tr></table></figure>
+<h2 id="类-class"><a class="markdownIt-Anchor" href="#类-class"></a> 类 class</h2>
+<p>对象的相关定义:</p>
+<ul>
+<li>对象</li>
+<li>状态</li>
+<li>行为</li>
+<li>标识</li>
+</ul>
+<p>简化后就是: 属性和方法</p>
+<h3 id="定义-2"><a class="markdownIt-Anchor" href="#定义-2"></a> 定义</h3>
+<h4 id="旧类"><a class="markdownIt-Anchor" href="#旧类"></a> 旧类</h4>
+<p>深</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt; class Person:</span><br><span class="line">&gt;     pass</span><br><span class="line">&gt; ...</span><br><span class="line">&gt; oldClass = Person()</span><br><span class="line">&gt; oldClass.__class__</span><br><span class="line">&gt; &lt;class __main__.Person at 0x10a644ef0&gt;</span><br><span class="line">&gt; type(Person)</span><br><span class="line">&gt; &lt;type &apos;classobj&apos;&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="新类"><a class="markdownIt-Anchor" href="#新类"></a> 新类</h4>
+<p>广</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; class NewPerson(object):</span><br><span class="line">&gt;     pass</span><br><span class="line">&gt; ...</span><br><span class="line">&gt; newClass = NewPerson()</span><br><span class="line">&gt; type(newClass)</span><br><span class="line">&gt; &lt;class &apos;__main__.NewPerson&apos;&gt;</span><br><span class="line">&gt; type(NewPerson)</span><br><span class="line">&gt; &lt;class &apos;__main__.NewPerson&apos;&gt;</span><br><span class="line">&gt; </span><br><span class="line">&gt; __metaclass__ = type // 写在这句之下的都是新类,即便没有(object)</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<p>(object) 表示继承自 object 类. Python3 中全部继承自 object 类.</p>
+<h3 id="初始化"><a class="markdownIt-Anchor" href="#初始化"></a> 初始化</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; def __init__(self, *args) // self 是必须的</span><br></pre></td></tr></table></figure>
+<h3 id="类属性和实例属性"><a class="markdownIt-Anchor" href="#类属性和实例属性"></a> 类属性和实例属性</h3>
+<p>可以动态修改和增加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; Person.propertyA = &apos;new value&apos;</span><br><span class="line">&gt; obj1 = Person()</span><br><span class="line">&gt; obj1.newProperty = &apos;new value&apos;</span><br></pre></td></tr></table></figure>
+<h3 id="命名空间"><a class="markdownIt-Anchor" href="#命名空间"></a> 命名空间</h3>
+<ul>
+<li>内置命名空间(Built-in Namespaces):Python 运行起来，它们就存在了。内置函数的命名空间都属于内 置命名空间，所以，我们可以在任何程序中直接运行它们，比如前面的 id(),不需要做什么操作，拿过来就直 接使用了。</li>
+<li>全局命名空间(Module:Global Namespaces):每个模块创建它自己所拥有的全局命名空间，不同模块的全 局命名空间彼此独立，不同模块中相同名称的命名空间，也会因为模块的不同而不相互干扰。</li>
+<li>本地命名空间(Function&amp;Class: Local Namespaces):模块中有函数或者类，每个函数或者类所定义的命 名空间就是本地命名空间。如果函数返回了结果或者抛出异常，则本地命名空间也结束了。</li>
+</ul>
+<p>查看命名空间:</p>
+<blockquote>
+<p>print locals()</p>
+</blockquote>
+<blockquote>
+<p>print golbals()</p>
+</blockquote>
+<h3 id="多重继承顺序"><a class="markdownIt-Anchor" href="#多重继承顺序"></a> 多重继承顺序</h3>
+<h4 id="广度优先"><a class="markdownIt-Anchor" href="#广度优先"></a> 广度优先</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; def class A1(B1, B2):</span><br><span class="line">&gt; def class A2(B1, B2):</span><br><span class="line">&gt; def class C1(A1, A2):</span><br><span class="line">&gt; </span><br><span class="line">&gt; C1.func()</span><br><span class="line">&gt; C1-&gt;A1-&gt;A2-&gt;B1-&gt;B2 // 广度优先 新类</span><br><span class="line">&gt; C1-&gt;A1-&gt;B1-&gt;B2-&gt;A2-&gt;B1-&gt;B2 // 深度优先 旧类</span><br></pre></td></tr></table></figure>
+<h3 id="super-函数"><a class="markdownIt-Anchor" href="#super-函数"></a> super 函数</h3>
+<p>super(Class, self).<strong>init</strong>()</p>
+<h3 id="绑定方法"><a class="markdownIt-Anchor" href="#绑定方法"></a> 绑定方法</h3>
+<p>def func() 就是绑定方法</p>
+<h3 id="非绑定方法"><a class="markdownIt-Anchor" href="#非绑定方法"></a> 非绑定方法</h3>
+<p>父类的方法都是非绑定方法</p>
+<h3 id="调用非绑定方法"><a class="markdownIt-Anchor" href="#调用非绑定方法"></a> 调用非绑定方法</h3>
+<p>super(BaseClass, self).function()</p>
+<h3 id="静态方法和类方法"><a class="markdownIt-Anchor" href="#静态方法和类方法"></a> 静态方法和类方法</h3>
+<ul>
+<li>@staticmethod</li>
+<li>@classmethod</li>
+</ul>
+<p>静态方法参数没有 self.<br>
+类方法参数没有 self. 但是有 cls.</p>
+<h3 id="封装和私有化"><a class="markdownIt-Anchor" href="#封装和私有化"></a> 封装和私有化</h3>
+<p>私有化:<br>
+方法数据名字前面加双下划线.</p>
+<p>在方法前加 @property ,  obj.fun()-&gt; obj.fun</p>
+<h3 id="特殊方法"><a class="markdownIt-Anchor" href="#特殊方法"></a> 特殊方法</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">__dict__:</span><br><span class="line">动态添加修改删除属性的保存字典, 存储对象成员.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">__slots__:</span><br><span class="line">锁定类型, __dict__将不存在, 所有的属性都是类属性, 实例访问是 readonly, 不能进行修改, 若要修改,只能通过类调用修改.</span><br><span class="line"></span><br><span class="line">__setattr__(self,name,value):</span><br><span class="line">obj.property = xxxx, 赋值时候调用 __setattr__, 可以重写其拦截.</span><br><span class="line"></span><br><span class="line">__getattr__(self,name) old:</span><br><span class="line">__getattribute__(self,name):</span><br><span class="line">obj.property , 获取值时调用.</span><br><span class="line"></span><br><span class="line">newProperty = propetty(getFunc,setFunc) # 第一个是 getter,第二个是 setter.顺序不能换</span><br><span class="line">obj.newProperty = xxx -&gt;obj.setFunc</span><br></pre></td></tr></table></figure>
+<h2 id="迭代器"><a class="markdownIt-Anchor" href="#迭代器"></a> 迭代器</h2>
+<p>重写 __iter__ , next() -&gt; raise StopIteration()</p>
+<h2 id="生成器"><a class="markdownIt-Anchor" href="#生成器"></a> 生成器</h2>
+<h3 id="简单的生成器"><a class="markdownIt-Anchor" href="#简单的生成器"></a> 简单的生成器</h3>
+<p>把含有 yield 的语句函数称作生成器. 生成器是一种用普通函数语法定义的迭代器. 生成器也是迭代器, 使用 yield 语句,普通的函数就成了生成器,且具备迭代器功能特性.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&gt; a = (x*x for x in range(4)) # 迭代的, 遍历一遍后再输出就没有</span><br><span class="line">&gt; for i in a:</span><br><span class="line">&gt;     print i,</span><br><span class="line"></span><br><span class="line">&gt; a = [x*x for x in range(4)] # 生成全部, 遍历输出一直有值</span><br><span class="line">&gt; </span><br><span class="line">&gt; def g():</span><br><span class="line">&gt;     yiled 0</span><br><span class="line">&gt;     yiled 1</span><br><span class="line">&gt;     yiled 2</span><br><span class="line">&gt; </span><br><span class="line">&gt; a = g()</span><br><span class="line">&gt; a.next() </span><br><span class="line">&gt; ...</span><br><span class="line">&gt; </span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<p>生成器解析式是有很多用途的，在不少地方替代列表，是一个不错的选择。特别是针对大量值的时候，如上节所<br>
+说的，列表占内存较多，迭代器(生成器是迭代器)的优势就在于少占内存，因此无需将生成器(或者说是迭代<br>
+器)实例化为一个列表，直接对其进行操作，方显示出其迭代的优势。比如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; sum(i*i for i in range(10)) # 可以少写一个 ()</span><br></pre></td></tr></table></figure>
+<h3 id="yiled"><a class="markdownIt-Anchor" href="#yiled"></a> yiled</h3>
+<p>yiled 和 retur 的区别:</p>
+<p>一般函数遇到 return 则返回并停止.<br><br>
+遇到 yield 则挂起, 再遇到则从挂起位置继续运行,直到结束抛出异常 StopIteration()</p>
+<h3 id="生成器方法"><a class="markdownIt-Anchor" href="#生成器方法"></a> 生成器方法</h3>
+<p>python2.5以后, 生成器可以在运行后给其提供新的值.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; def r(n):</span><br><span class="line">&gt; 		while True:</span><br><span class="line">&gt; 			n = (yield n)</span><br><span class="line">&gt; </span><br><span class="line">&gt; a = r(n)</span><br><span class="line">&gt; a.send(&apos;xxx&apos;) # Error, 要先启动(next())才能 send.</span><br><span class="line">&gt; a.next() # 4</span><br><span class="line">&gt; a.next() # 4</span><br><span class="line">&gt; a.send(&apos;xxx&apos;) # &apos;xxx&apos;</span><br><span class="line">&gt; a.next() # 空 None</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<p>调用一次 send(None)就是触发一次 参数是 None 的 next. <br><br>
+调用一次 next()就是触发一次 send(n),但 send(n)之后的 yield n -&gt; None</p>
+<ul>
+<li>throw(type, value=None, traceback=None):用于在生成器内部(生成器的当前挂起处，或未启动时在定 义处)抛出一个异常(在 yield 表达式中)。</li>
+<li>close():调用时不用参数，用于关闭生成器。</li>
+</ul>
+<h2 id="错误和异常"><a class="markdownIt-Anchor" href="#错误和异常"></a> 错误和异常</h2>
+<h3 id="错误"><a class="markdownIt-Anchor" href="#错误"></a> 错误</h3>
+<p>语法错误和逻辑错误, 遇到错误, 抛出异常.</p>
+<h3 id="异常"><a class="markdownIt-Anchor" href="#异常"></a> 异常</h3>
+<p>当 Python 抛出异常的时候，首先有“跟踪记录(Traceback)”，还可以给它取一个更优雅的名字“回溯”。后 面显示异常的详细信息。异常所在位置(文件、行、在某个模块)。<br>
+最后一行是错误类型以及导致异常的原因。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">异常</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">NameError</td>
+<td style="text-align:left">尝试访问一个没有申明的变量</td>
+</tr>
+<tr>
+<td style="text-align:left">ZeroDivisionError</td>
+<td style="text-align:left">除数为 0</td>
+</tr>
+<tr>
+<td style="text-align:left">SyntaxError</td>
+<td style="text-align:left">语法错误</td>
+</tr>
+<tr>
+<td style="text-align:left">IndexError</td>
+<td style="text-align:left">索引超出序列范围</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyError</td>
+<td style="text-align:left">请求一个不存在的字典关键字</td>
+</tr>
+<tr>
+<td style="text-align:left">IOError</td>
+<td style="text-align:left">输入输出错误(比如你要读的文件不存在)</td>
+</tr>
+<tr>
+<td style="text-align:left">AttributeError</td>
+<td style="text-align:left">尝试访问未知的对象属性</td>
+</tr>
+</tbody>
+</table>
+<h3 id="处理异常"><a class="markdownIt-Anchor" href="#处理异常"></a> 处理异常</h3>
+<p>try…except…(else…)(finally…)</p>
+<p>try…except…except… 处理多个异常</p>
+<p>try…except (Error1,Error2):…</p>
+<p>try…except (Error1,Error2), e: …</p>
+<p>try…except Exception,e</p>
+<p>Python3.x:<br><br>
+try…except(Error1,Error2) as e: …</p>
+<p>except 后面也可以没有任何异常类型，即无异常参数。如果这样，不论 try 部分发生什么异常，都会执行 excep t。</p>
+<p>raise 将异常信息抛出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; try:</span><br><span class="line">&gt; 	pass</span><br><span class="line">&gt; except NameError:</span><br><span class="line">&gt; 	pass</span><br><span class="line">&gt; </span><br><span class="line">&gt; ...</span><br></pre></td></tr></table></figure>
+<p>eval(…)</p>
+<h3 id="assert"><a class="markdownIt-Anchor" href="#assert"></a> assert</h3>
+<p>assert 1 # Fine</p>
+<p>assert 0 # Throw Error</p>
+<ul>
+<li>防御性的编程</li>
+<li>运行时对程序逻辑的检测</li>
+<li>合约性检查(比如前置条件，后置条件)</li>
+<li>程序中的常量</li>
+<li>检查文档</li>
+</ul>
+<h2 id="模块"><a class="markdownIt-Anchor" href="#模块"></a> 模块</h2>
+<p>模块是程序 .py 文件.</p>
+<p>自定义模块还需要 python 能找到你的文件.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; import sys </span><br><span class="line">&gt; sys.path.append(yourPath)</span><br><span class="line">&gt; impot YourPythonModule</span><br><span class="line">&gt; YourPythonModule.protery</span><br><span class="line">&gt; YourPythonModule.func()</span><br><span class="line">&gt; ...</span><br></pre></td></tr></table></figure>
+<p>之后会增加 YourPythonModule.pyc 文件</p>
+<p>如果是作为程序执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__name__ == &quot;__main__&quot;</span><br></pre></td></tr></table></figure>
+<p>如果作为模块引入 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">在一般情况下，如果仅仅是用作模块引入，可以不写 ```if __name__ == &quot;__main__&quot;``` 。</span><br><span class="line"></span><br><span class="line">### PYTHONPATH 环境变量</span><br><span class="line"></span><br><span class="line">### \_\_init__.py 方法</span><br><span class="line"></span><br><span class="line">是一个空文件，将它放在某个目录中，就可以将该目录中的其它 .py 文件作为模块被引用。</span><br><span class="line"></span><br><span class="line">## 标准库</span><br><span class="line">### 引用方式</span><br><span class="line"></span><br><span class="line">import xxxxx</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>import pprint<br>
+pprint.pprint(xxxx)</p>
+</blockquote>
+<blockquote>
+<p>from pprint import pprint<br>
+pprint(xxxx)</p>
+</blockquote>
+<blockquote>
+<p>import pprint as p<br>
+p.pprint(xxxx)</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">\_\_file__ 查看库的源文件</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### sys</span><br><span class="line">#### argv</span><br></pre></td></tr></table></figure>
+<p>import sys<br>
+sys.argv #入口参数 第一个一般是文件名</p>
+<p>print &quot;The file name: &quot;, sys.argv[0]<br>
+print “The number of argument”, len(sys.argv)<br>
+print &quot;The argument is: &quot;, str(sys.argv)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### exit</span><br><span class="line"></span><br><span class="line">* sys.exit() 		# 退出当前程序 返回 SystemExit</span><br><span class="line">* sys.exit(0) 	# 正常退出</span><br><span class="line">* sys.exit(&apos;some infomation&apos;)</span><br><span class="line">* sys_exit() 		# 退出当前程序</span><br><span class="line"></span><br><span class="line">#### path</span><br><span class="line">查找模块的搜索目录</span><br><span class="line"></span><br><span class="line">#### stdin,stdout,stderr</span><br><span class="line"></span><br><span class="line">变量都是类文件流对象.</span><br><span class="line"></span><br><span class="line">stdin-&gt; raw_input() -&gt; python3.x -&gt; input()</span><br><span class="line"></span><br><span class="line">print() -&gt; stdout.write(obj+&apos;\n&apos;)</span><br><span class="line"></span><br><span class="line">输出到文件中:</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>f = open(path,‘w’)<br>
+sys.stdout = f<br>
+…<br>
+print ‘…’ # 写到文件中<br>
+…<br>
+f.close()</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### OS</span><br><span class="line">#### 重命名,删除文件</span><br><span class="line"></span><br><span class="line">* rename(old,new)</span><br><span class="line">* remove(path) #删除文件, 不能删除目录</span><br><span class="line">* listdir()</span><br><span class="line">* getcwd() #当前工作目录</span><br><span class="line">* chdir(path) #改变当前工作目录 -&gt; cd</span><br><span class="line">* pardir() #获得父级目录 -&gt; ..</span><br><span class="line">* makedir</span><br><span class="line">* makedirs #中间的目录也会被建立起来</span><br><span class="line">* removedirs #删除空目录</span><br><span class="line">* shutil.rmtree(dir)</span><br><span class="line"></span><br><span class="line">#### 文件和目录属性</span><br><span class="line"></span><br><span class="line">* stat(path)</span><br><span class="line">* chmod()</span><br><span class="line">* system(shellCommand) #当前线程执行</span><br><span class="line">* exec() or execvp() #新的进程中执行</span><br><span class="line"></span><br><span class="line">#### 打开浏览器</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>import os<br>
+os.system(browserPath + &quot; <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a>&quot;)</p>
+</blockquote>
+<blockquote>
+<p>import webbrowser as w<br>
+w.open(url)</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### heapq</span><br><span class="line"></span><br><span class="line">[&apos;__about__&apos;, &apos;__all__&apos;, &apos;__builtins__&apos;, &apos;__doc__&apos;, &apos;__file__&apos;, &apos;__name__&apos;, &apos;__package__&apos;, &apos;_heapify_max&apos;, &apos;_heappushpop_max&apos;, &apos;_nlargest&apos;, &apos;_nsmallest&apos;, &apos;_siftdown&apos;, &apos;_siftdown_max&apos;, &apos;_siftup&apos;, &apos;_siftup_max&apos;, &apos;chain&apos;, &apos;cmp_lt&apos;, &apos;count&apos;, &apos;heapify&apos;, &apos;heappop&apos;, &apos;heappush&apos;, &apos;heappushpop&apos;, &apos;heapreplace&apos;, &apos;imap&apos;, &apos;islice&apos;, &apos;itemgetter&apos;, &apos;izip&apos;, &apos;merge&apos;, &apos;nlargest&apos;, &apos;nsmallest&apos;, &apos;tee&apos;]</span><br><span class="line"></span><br><span class="line">* heappush(heap, item)</span><br><span class="line">* heappop() # pop minimun item</span><br><span class="line">* heapify() # list to heap</span><br><span class="line">* heapreplace(heap, item) # pop then push</span><br><span class="line"></span><br><span class="line">### deque</span><br><span class="line"></span><br><span class="line">[&apos;__class__&apos;, &apos;__copy__&apos;, &apos;__delattr__&apos;, &apos;__delitem__&apos;, &apos;__doc__&apos;, &apos;__eq__&apos;, &apos;__format__&apos;, &apos;__ge__&apos;, &apos;__getattribute__&apos;, &apos;__getitem__&apos;, &apos;__gt__&apos;, &apos;__hash__&apos;, &apos;__iadd__&apos;, &apos;__init__&apos;, &apos;__iter__&apos;, &apos;__le__&apos;, &apos;__len__&apos;, &apos;__lt__&apos;, &apos;__ne__&apos;, &apos;__new__&apos;, &apos;__reduce__&apos;, &apos;__reduce_ex__&apos;, &apos;__repr__&apos;, &apos;__reversed__&apos;, &apos;__setattr__&apos;, &apos;__setitem__&apos;, &apos;__sizeof__&apos;, &apos;__str__&apos;, &apos;__subclasshook__&apos;, &apos;append&apos;, &apos;appendleft&apos;, &apos;clear&apos;, &apos;count&apos;, &apos;extend&apos;, &apos;extendleft&apos;, &apos;maxlen&apos;, &apos;pop&apos;, &apos;popleft&apos;, &apos;remove&apos;, &apos;reverse&apos;, &apos;rotate&apos;]</span><br><span class="line"></span><br><span class="line">* deque(list)-&gt;deque object</span><br><span class="line">* append(item) #right</span><br><span class="line">* appendleft(item) #left</span><br><span class="line">* pop() #right</span><br><span class="line">* popleft() #left</span><br><span class="line">* extend() #left</span><br><span class="line">* extendleft() #right</span><br><span class="line">* rotate(offset) #正数, 指针左移. 负数,指针右移</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### calendar</span><br><span class="line"></span><br><span class="line">import calendar</span><br><span class="line"></span><br><span class="line">[&apos;Calendar&apos;, &apos;EPOCH&apos;, &apos;FRIDAY&apos;, &apos;February&apos;, &apos;HTMLCalendar&apos;, &apos;IllegalMonthError&apos;, &apos;IllegalWeekdayError&apos;, &apos;January&apos;, &apos;LocaleHTMLCalendar&apos;, &apos;LocaleTextCalendar&apos;, &apos;MONDAY&apos;, &apos;SATURDAY&apos;, &apos;SUNDAY&apos;, &apos;THURSDAY&apos;, &apos;TUESDAY&apos;, &apos;TextCalendar&apos;, &apos;TimeEncoding&apos;, &apos;WEDNESDAY&apos;, &apos;_EPOCH_ORD&apos;, &apos;__all__&apos;, &apos;__builtins__&apos;, &apos;__doc__&apos;, &apos;__file__&apos;, &apos;__name__&apos;, &apos;__package__&apos;, &apos;_colwidth&apos;, &apos;_locale&apos;, &apos;_localized_day&apos;, &apos;_localized_month&apos;, &apos;_spacing&apos;, &apos;c&apos;, &apos;calendar&apos;, &apos;datetime&apos;, &apos;day_abbr&apos;, &apos;day_name&apos;, &apos;error&apos;, &apos;firstweekday&apos;, &apos;format&apos;, &apos;formatstring&apos;, &apos;isleap&apos;, &apos;leapdays&apos;, &apos;main&apos;, &apos;mdays&apos;, &apos;month&apos;, &apos;month_abbr&apos;, &apos;month_name&apos;, &apos;monthcalendar&apos;, &apos;monthrange&apos;, &apos;prcal&apos;, &apos;prmonth&apos;, &apos;prweek&apos;, &apos;setfirstweekday&apos;, &apos;sys&apos;, &apos;timegm&apos;, &apos;week&apos;, &apos;weekday&apos;, &apos;weekheader&apos;]</span><br><span class="line"></span><br><span class="line">* calendar(year) # 打印日历</span><br><span class="line">* isleap # 是否是闰年</span><br><span class="line">* leapdays(y1,y2) # 两年之间的闰年总数</span><br><span class="line">* month(year,month) # 打印月份</span><br><span class="line">* monthcalendar(year,month) #返回当月天数的嵌套数组</span><br><span class="line">* monthrange(year,month) #-&gt;(a,b) 该月第一天是星期几, 一共有几天</span><br><span class="line">* wekkday(year,month,day) #-&gt; 星期几</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### time</span><br><span class="line"></span><br><span class="line">import time</span><br><span class="line"></span><br><span class="line">* time() # -&gt; now</span><br><span class="line">* localtime() # -&gt; year,month,monthday,hour,min,sec,wday,yday,isdst(夏令时)</span><br><span class="line">* gmtime() # 格林威治时间 GMT</span><br><span class="line">* asctime() # friendly ui like -&gt;  Mon Jan 12 00:00:00 2017</span><br><span class="line">* mktime(timelist) -&gt; number</span><br><span class="line">* strftime(fmt) # strftime(&apos;%Y-%m-%d %H:%M:%S&apos;)-&gt;&apos;2017-06-09 16:09:45&apos;</span><br><span class="line">* strptime(input, fmt) # -&gt; numbers strftime 的反转换</span><br><span class="line"></span><br><span class="line">### datetime</span><br><span class="line"></span><br><span class="line">* date: 日期类，常用的属性有 year/month/day</span><br><span class="line">* date.today()</span><br><span class="line">* date.ctime()</span><br><span class="line">* date.timetuple()</span><br><span class="line">* date.toordinal()</span><br><span class="line">* time: 时间类，常用的有 hour/minute/second/microsecond</span><br><span class="line">* datetime:  期时间类</span><br><span class="line">* timedelta: 时间间隔类</span><br><span class="line">* tzinfo: 时区类</span><br><span class="line"></span><br><span class="line">### urllib</span><br><span class="line"></span><br><span class="line">网络模块</span><br><span class="line"> </span><br><span class="line">[&apos;ContentTooShortError&apos;, &apos;FancyURLopener&apos;, &apos;MAXFTPCACHE&apos;, &apos;URLopener&apos;, &apos;__all__&apos;, &apos;__builtins__&apos;, &apos;__doc__&apos;, &apos;__file__&apos;, &apos;__name__&apos;, &apos;__package__&apos;, &apos;__version__&apos;, &apos;_asciire&apos;, &apos;_ftperrors&apos;, &apos;_get_proxies&apos;, &apos;_get_proxy_settings&apos;, &apos;_have_ssl&apos;, &apos;_hexdig&apos;, &apos;_hextochr&apos;, &apos;_hostprog&apos;, &apos;_is_unicode&apos;, &apos;_localhost&apos;, &apos;_noheaders&apos;, &apos;_nportprog&apos;, &apos;_passwdprog&apos;, &apos;_portprog&apos;, &apos;_queryprog&apos;, &apos;_safe_map&apos;, &apos;_safe_quoters&apos;, &apos;_tagprog&apos;, &apos;_thishost&apos;, &apos;_typeprog&apos;, &apos;_urlopener&apos;, &apos;_userprog&apos;, &apos;_valueprog&apos;, &apos;addbase&apos;, &apos;addclosehook&apos;, &apos;addinfo&apos;, &apos;addinfourl&apos;, &apos;always_safe&apos;, &apos;base64&apos;, &apos;basejoin&apos;, &apos;c&apos;, &apos;ftpcache&apos;, &apos;ftperrors&apos;, &apos;ftpwrapper&apos;, &apos;getproxies&apos;, &apos;getproxies_environment&apos;, &apos;getproxies_macosx_sysconf&apos;, &apos;i&apos;, &apos;localhost&apos;, &apos;noheaders&apos;, &apos;os&apos;, &apos;pathname2url&apos;, &apos;proxy_bypass&apos;, &apos;proxy_bypass_environment&apos;, &apos;proxy_bypass_macosx_sysconf&apos;, &apos;quote&apos;, &apos;quote_plus&apos;, &apos;re&apos;, &apos;reporthook&apos;, &apos;socket&apos;, &apos;splitattr&apos;, &apos;splithost&apos;, &apos;splitnport&apos;, &apos;splitpasswd&apos;, &apos;splitport&apos;, &apos;splitquery&apos;, &apos;splittag&apos;, &apos;splittype&apos;, &apos;splituser&apos;, &apos;splitvalue&apos;, &apos;ssl&apos;, &apos;string&apos;, &apos;sys&apos;, &apos;test1&apos;, &apos;thishost&apos;, &apos;time&apos;, &apos;toBytes&apos;, &apos;unquote&apos;, &apos;unquote_plus&apos;, &apos;unwrap&apos;, &apos;url2pathname&apos;, &apos;urlcleanup&apos;, &apos;urlencode&apos;, &apos;urlopen&apos;, &apos;urlretrieve&apos;]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>import urllib as T<br>
+data = T.urlopen(“http:…”)<br>
+print data.read()</p>
+<p>#data Is iterable<br>
+<a href="http://data.info" target="_blank" rel="noopener">data.info</a>()<br>
+data.getcode() # return status code - 200<br>
+data.geturl()</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">* **urlopen(url,PostData,proxies)** -&gt; &apos;class to add info() and geturl() methods to an open file.&apos;</span><br><span class="line">* **urlretrieve(url,localpathname, 回调=None,请求数据=None)** # 回调 args-&gt;a,b,c progress = 100.0 * a * b / c</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### 编解码</span><br><span class="line"></span><br><span class="line">* quite(string[,safe]): 对字符串进行编码。参数 safe 指定了不需要编码的字符</span><br><span class="line">* urllib.unquote(string) :对字符串进行解码</span><br><span class="line">* quote_plus(string [ , safe ] ) :与 urllib.quote 类似，但这个方法用&apos;+&apos;来替换空格 &apos; &apos; ，而 quote 用&apos;%2 0&apos;来代替空格</span><br><span class="line">* unquote_plus(string ) :对字符串进行解码;</span><br><span class="line">* urllib.urlencode(query[, doseq]):将 dict 或者包含两个元素的元组列表转换成 url 参数。例如&#123;&apos;name&apos;: &apos;laoqi&apos;, &apos;age&apos;: 40&#125;将被转换为&quot;name=laoqi&amp;age=40&quot;</span><br><span class="line">* pathname2url(path):将本地路径转换成 url 路径</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### urllib2</span><br><span class="line"></span><br><span class="line">urllib2 是另外一个模块，它跟 urllib 有相似的地方——都是对 url 相关的操作，也有不同的地方。</span><br><span class="line"></span><br><span class="line">[&apos;AbstractBasicAuthHandler&apos;, &apos;AbstractDigestAuthHandler&apos;, &apos;AbstractHTTPHandler&apos;, &apos;BaseHandler&apos;, &apos;CacheFTPHandler&apos;, &apos;FTPHandler&apos;, &apos;FileHandler&apos;, &apos;HTTPBasicAuthHandler&apos;, &apos;HTTPCookieProcessor&apos;, &apos;HTTPDefaultErrorHandler&apos;, &apos;HTTPDigestAuthHandler&apos;, &apos;HTTPError&apos;, &apos;HTTPErrorProcessor&apos;, &apos;HTTPHandler&apos;, &apos;HTTPPasswordMgr&apos;, &apos;HTTPPasswordMgrWithDefaultRealm&apos;, &apos;HTTPRedirectHandler&apos;, &apos;HTTPSHandler&apos;, &apos;OpenerDirector&apos;, &apos;ProxyBasicAuthHandler&apos;, &apos;ProxyDigestAuthHandler&apos;, &apos;ProxyHandler&apos;, &apos;Request&apos;, &apos;StringIO&apos;, &apos;URLError&apos;, &apos;UnknownHandler&apos;, &apos;__builtins__&apos;, &apos;__doc__&apos;, &apos;__file__&apos;, &apos;__name__&apos;, &apos;__package__&apos;, &apos;__version__&apos;, &apos;_cut_port_re&apos;, &apos;_have_ssl&apos;, &apos;_opener&apos;, &apos;_parse_proxy&apos;, &apos;_safe_gethostbyname&apos;, &apos;addinfourl&apos;, &apos;base64&apos;, &apos;bisect&apos;, &apos;build_opener&apos;, &apos;ftpwrapper&apos;, &apos;getproxies&apos;, &apos;hashlib&apos;, &apos;httplib&apos;, &apos;install_opener&apos;, &apos;localhost&apos;, &apos;mimetools&apos;, &apos;os&apos;, &apos;parse_http_list&apos;, &apos;parse_keqv_list&apos;, &apos;posixpath&apos;, &apos;proxy_bypass&apos;, &apos;quote&apos;, &apos;random&apos;, &apos;randombytes&apos;, &apos;re&apos;, &apos;request_host&apos;, &apos;socket&apos;, &apos;splitattr&apos;, &apos;splithost&apos;, &apos;splitpasswd&apos;, &apos;splitport&apos;, &apos;splittag&apos;, &apos;splittype&apos;, &apos;splituser&apos;, &apos;splitvalue&apos;, &apos;ssl&apos;, &apos;sys&apos;, &apos;time&apos;, &apos;toBytes&apos;, &apos;unquote&apos;, &apos;unwrap&apos;, &apos;url2pathname&apos;, &apos;urlopen&apos;, &apos;urlparse&apos;, &apos;warnings&apos;]</span><br><span class="line"></span><br><span class="line">#### Request</span><br></pre></td></tr></table></figure>
+<p>// 请求一个页面数据</p>
+<blockquote>
+<p>req = urllib2.Request(&quot;…&quot;) #建立连接<br>
+response = urllib2.urlopen(req)<br>
+page = response.read()<br>
+print page</p>
+</blockquote>
+<p>// 一个 POST 例子</p>
+<blockquote>
+<p>url = ‘…’</p>
+<p>userAgent = ‘Mozilla/5.0 (iPad; CPU OS 9_1 like Mac OS X) AppleWebKit/601.1 (KHTML, like Gecko) CriOS/58.0.3029.110 Mobile/13B143 Safari/601.1.46’<br>
+headers = {‘User-Agent’:userAgent}<br>
+params = {key:value,…}</p>
+<p>data = urllib.urlencode(params) #编码<br>
+req = urllib2.Request(url,data,headers) #请求<br>
+response = urllib2.urlopen(req) #开始请求并接受返回信息<br>
+pagedata = response.read() #读取反馈内容</p>
+</blockquote>
+<p>// 除此之外还可以设置:<br>
+// HTTP Proxy<br>
+// Timeout<br>
+// redirect<br>
+// cookit</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## XML</span><br><span class="line"></span><br><span class="line">Summary from w3school:</span><br><span class="line"></span><br><span class="line">* XML 指可扩展标记语言(EXtensible Markup Language)* XML 是一种标记语言，很类似 HTML* XML 的设计宗 是传输数据，而非显示数据* XML 标签没有被预定义。您需要自行定义标签。* XML 被设计为具有自我描述性。* XML 是 W3C 的推荐标准</span><br><span class="line"></span><br><span class="line">import xml</span><br><span class="line"></span><br><span class="line">xml.\_\_all\_\_ &lt;/br&gt;</span><br><span class="line">[&apos;dom&apos;, &apos;parsers&apos;, &apos;sax&apos;, &apos;etree&apos;]:</span><br><span class="line"></span><br><span class="line">* xml.dom.* 模块:&lt;/br&gt;Document Object Model。适合用于处理 DOM API。它能够将 xml 数据在内存中解析 成一个树，然后通过对树的操作来操作 xml。但是，这种方式由于将 xml 数据映射到内存中的树，导致比较 慢，且消耗更多内存。* xml.sax.* 模块:&lt;/br&gt;simple API for XML。由于 SAX 以流式读取 xml 文件，从而速度较快，切少占用内 存，但是操作上稍复杂，需要用户实现回调函数。* xml.parser.expat:&lt;/br&gt;是一个直接的，低级一点的基于 C 的 expat 的语法分析器。 expat 接口基于事件反 馈，有点像 SAX 但又不太像，因为它的接口并不是完全规范于 expat 库的。* xml.etree.ElementTree (以下简称 ET):&lt;/br&gt;元素树。它提供了轻量级的 Python 式的 API，相对于 DOM，E T 快了很多 ，而且有很多令人愉悦的 API 可以使用;相对于 SAX，ET 也有 ET.iterparse 提供了 “在空 中” 的处理方式，没有必要加载整个文档到内存，节省内存。ET 的性能的平均值和 SAX 差不多，但是 API 的效率更高一点而且使用起来很方便。</span><br><span class="line"></span><br><span class="line"> 所以, 推荐使用 ElementTree:</span><br></pre></td></tr></table></figure>
+<p>// Python2.x</p>
+<blockquote>
+<p>try:<br>
+import xml.etree.cElementTree as et<br>
+except ImportError:<br>
+import xml.etree.ElementTree as et<br>
+// Python3.x<br>
+import xml.etree.ElementTree as et</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2.x的 ElementTree 模块已经跟教程不一样了..之后再学3.x 的教程.</span><br><span class="line"></span><br><span class="line">## JSON</span><br><span class="line"></span><br><span class="line">* key-value pairs: Named object/record/struct/dictionary/hash table/keyed list/associative array in difference language.</span><br><span class="line">* order list of array: In mostly language , it construed array.</span><br><span class="line"></span><br><span class="line">Function:</span><br><span class="line"></span><br><span class="line">* encoding: python object to json string</span><br><span class="line">* decoding: json string to python object</span><br><span class="line"></span><br><span class="line">Object -&gt; JSON : json.dumps(obj)</span><br><span class="line">JSON -&gt; Object : json.loads(...)</span><br><span class="line"></span><br><span class="line">but after ljson.loads(...), result have a char type, here is the char type list:</span><br><span class="line"></span><br><span class="line">|Python==&gt;|JSON|</span><br><span class="line">| :-: | :-: |</span><br><span class="line">|dict|object|</span><br><span class="line">|list, tuple| array|</span><br><span class="line">|str,unicode|string|</span><br><span class="line">|int ,long ,float|number|</span><br><span class="line">|True|true|</span><br><span class="line">|False|false|</span><br><span class="line">|None|null|</span><br><span class="line"></span><br><span class="line">|JSON==&gt;|Python|</span><br><span class="line">| :-: | :-: |</span><br><span class="line">|object|dict|</span><br><span class="line">|array|list|</span><br><span class="line">|string|unicode|</span><br><span class="line">|number(int)|int,long|</span><br><span class="line">|number(real)|float|</span><br><span class="line">|true|True|</span><br><span class="line">|false|False|</span><br><span class="line">|null|None|</span><br><span class="line"></span><br><span class="line">## Third Part Lib</span><br><span class="line"></span><br><span class="line">Install mathod:</span><br><span class="line"></span><br><span class="line">1. With code file: Python setup.py install , 这种是在本地的</span><br><span class="line">2. pip: 官方推荐 pip , 第三方库管理工具.[https://pypi.python.org/pypi](https://pypi.python.org/pypi)</span><br><span class="line"></span><br><span class="line">For example, use requests lib:</span><br></pre></td></tr></table></figure>
+<p>pip install requests</p>
+<blockquote>
+<p>import requests<br>
+#get<br>
+r = requests.get(url)<br>
+r.cookies<br>
+r.headers<br>
+r.encoding # UTF-8<br>
+r.status_code # 200<br>
+print r.text # …<br>
+r.content<br>
+#post<br>
+params = {key:value,…}<br>
+r = requests.post(url, params)<br>
+#http header<br>
+r.headers[‘content-type’] # 不用区分大小写</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 数据读写</span><br><span class="line"></span><br><span class="line">### pickle/cpickle</span><br><span class="line"></span><br><span class="line">pickle/cpickle 后者更快.</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>import pickle<br>
+f = open(path, ‘wb’)<br>
+pickle.dump(listA/dictA, f, protocol=0) # protocol = 1 or True then use binary zip to achrive<br>
+f.close()</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### shelve</span><br><span class="line"></span><br><span class="line">pickle 的升级版, 处理复杂数据.</span><br></pre></td></tr></table></figure>
+<p>#write</p>
+<blockquote>
+<p>import shelve<br>
+s = shelve.open(path, writeback=True) # writeback=True 才可以修改已有的值<br>
+s[‘name’] = ‘grayland’<br>
+…<br>
+s[‘data’] = {…}<br>
+…<br>
+s.close()<br>
+#read<br>
+s = shelve.open(path)<br>
+name = s[‘name’]<br>
+…<br>
+data = s[‘data’]<br>
+…<br>
+for k in s:<br>
+pass<br>
+…</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## mysql</span><br><span class="line"></span><br><span class="line">到目前为止，地球上有三种类型的数据:</span><br><span class="line">* 关系型数据库:MySQL、Microsoft Access、SQL Server、Oracle、... </span><br><span class="line">* 非关系型数据库:MongoDB、BigTable(Google)、...* 键值数据库:Apache Cassandra(Facebook)、LevelDB(Google) ...</span><br><span class="line">在本教程中，我们主要介绍常用的开源的数据库，其中 MySQL 是典型代表。</span><br><span class="line"></span><br><span class="line">### 安装</span><br><span class="line"></span><br><span class="line">```sudo apt-get install mysql-server</span><br></pre></td></tr></table></figure>
+<h3 id="配置"><a class="markdownIt-Anchor" href="#配置"></a> 配置</h3>
+<figure class="highlight plain"><figcaption><span>mysqld start```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">创建好后的 root 没有密码:</span><br><span class="line"></span><br><span class="line">```$mysql -u rootfirehare</span><br></pre></td></tr></table></figure>
+<p>进入 mysql 之后，会看到&gt;符号开头，这就是 mysql 的命令操作界面了。</p>
+<p>设置密码:</p>
+<figure class="highlight plain"><figcaption><span>GRANT ALL PRIVILEGES ON *.* TO root@localhost IDENTIFIED BY "123456";```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 运行</span><br></pre></td></tr></table></figure>
+<p>$ mysql -u root -p Enter password:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>mysql&gt; show databases;<br>
+±-------------------+ | Database | ±-------------------+ | information_schema |<br>
+|<br>
+| |<br>
+| carstore | cutvideo | itdiffer<br>
+| mysql<br>
+|<br>
+| performance_schema |<br>
+| test | ±-------------------+</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 安装 Python-MySQLdb</span><br><span class="line"></span><br><span class="line">Python-MySQLdb 是一个接口程序，Python 通过它对 mysql 数据实现各种操作。</span><br><span class="line"></span><br><span class="line">如果要源码安装，可以这里下载 [Python-mysqldb](https://pypi.Python.org/pypi/MySQL-Python/)</span><br></pre></td></tr></table></figure>
+<p>sudo apt-get install build-essential Python-dev libmysqlclient-dev<br>
+sudo apt-get install Python-MySQLdb</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">pip安装:</span><br></pre></td></tr></table></figure>
+<p>pip install mysql-Python</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">使用:</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>import MySQLdb</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">## SQLite </span><br><span class="line">### 建立连接对象</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>import sqlite3<br>
+conn = sqlite3.connect(“23302.db”)</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 游标对象</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>cur = conn.cursor()</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">* close()</span><br><span class="line">* execute()</span><br><span class="line">* executemany()</span><br><span class="line">* fetchall()</span><br><span class="line"></span><br><span class="line">### 创建数据库表</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>create_table = “create table book (title text, author text, lang text)”<br>
+cur.execute(create_table)</p>
+</blockquote>
+<p>#添加数据</p>
+<blockquote>
+<p>cur.execute(“insert in to books values(“BookName”,“GrayLand”, “Chinese”)”)</p>
+<p>conn.commit()<br>
+cur.close()<br>
+conn.close()</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">###  查询</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>conn = sqlite3.connect(path)<br>
+cur = conn.cursor()<br>
+cur.execute(“select * from books”)<br>
+print cur.fetchall()</p>
+<p>#批量插入<br>
+books = [tuple(xx,xx,xx),…]</p>
+<p>cur.executemany(“insert into book values (?,?,?)”, books)<br>
+conn.commit()</p>
+<p>#查询插入结果</p>
+<p>rows = cur.execute(“select * from books”)<br>
+for row in rows:<br>
+print row</p>
+<p>…</p>
+<p>#更新<br>
+cur.execute(&quot;update books set title=‘xxx’ where author=‘value’)<br>
+conn.commit()</p>
+<p>cur.fetchone()<br>
+…<br>
+cur.fetchall()<br>
+…</p>
+<p>#删除<br>
+cur.execute(“delete from books where author=‘xxx’”)<br>
+conn.commit()</p>
+<p>cur.close()<br>
+conn.close()</p>
+</blockquote>
+<pre class="highlight"><code class="">
+ 更多参考资料 : [http s://docs.Python.org/2/library/sqlite3.html](http s://docs.Python.org/2/library/sqlite3.html)
+ 
+ 
+</code></pre>
+</div><iframe src="/donate/?AliPayQR=/img/glAlipay.JPG&amp;WeChatQR=/img/glWechatPay.JPG&amp;GitHub=null&amp;BTCQR=null&amp;BTCKEY=null&amp;PayPal=null" style="overflow-x:hidden; overflow-y:hidden; border:0xp none #fff; min-height:240px; width:100%;" frameborder="0" scrolling="no"></iframe><div class="tags"><a href="/tags/Python/">Python</a></div><div class="post-nav"><a class="pre" href="/2017/p2t3note/">Python 2.x to 3.6.1 新特性学习笔记</a><a class="next" href="/2017/ZAOOCC/">禅与 Objective-C 编程艺术（Zen and the Art of the Objective-C Craftsmanship 中文翻译）</a></div><div id="container"></div><link rel="stylesheet" href="/css/default.css?v=0.0.0"><script src="/js/gitment.browser.js?v=0.0.0"></script><script>var gitment = new Gitment({
+  owner: 'GrayLand119',
+  repo: 'GrayLand119.github.io',
+  oauth: {
+    client_id: 'bb3e21016786a32e92ce',
+    client_secret: 'fec0106c72a4aaaa8251129c27dd6d59ed34c3ed',
+  },
+})
+gitment.render('container')
+</script></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://grayland119.github.io"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Xcode/">Xcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/OpenCV/" style="font-size: 15px;">OpenCV</a> <a href="/tags/Runtime/" style="font-size: 15px;">Runtime</a> <a href="/tags/iOS/" style="font-size: 15px;">iOS</a> <a href="/tags/Xcode/" style="font-size: 15px;">Xcode</a> <a href="/tags/lldb/" style="font-size: 15px;">lldb</a> <a href="/tags/ReactiveCocoa/" style="font-size: 15px;">ReactiveCocoa</a> <a href="/tags/Objc/" style="font-size: 15px;">Objc</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/iOS逆向/" style="font-size: 15px;">iOS逆向</a> <a href="/tags/iOS轮子/" style="font-size: 15px;">iOS轮子</a> <a href="/tags/TensorFlow/" style="font-size: 15px;">TensorFlow</a> <a href="/tags/iOS规范/" style="font-size: 15px;">iOS规范</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/tfln2/">TensorFlow 学习笔记(2)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/tfln1/">TensorFlow 学习笔记(1)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/iosclrs/">iOS崩溃日志符号还原</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/prufagp/">Python requests 上传文件, 并获取上传进度</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/p3note/">Python 3.6 学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/iOSCNote/">iOS使用dumpdecrypted砸壳笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/p2t3note/">Python 2.x to 3.6.1 新特性学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/p2note/">Python 2 学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/ZAOOCC/">禅与 Objective-C 编程艺术（Zen and the Art of the Objective-C Craftsmanship 中文翻译）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/iOSOCVFL/">iOS中使用OpenCV进行线性拟合(直线and曲线)</a></li></ul></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">GrayLand's blogs.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div><!-- hexo-inject:begin --><!-- hexo-inject:end --></body></html>
