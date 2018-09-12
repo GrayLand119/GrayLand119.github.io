@@ -6,54 +6,45 @@
   s.parentNode.insertBefore(hm, s);
   })();</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">TensorFlow学习笔记(7) - 经典CNN模型</h1><a id="logo" href="/.">GrayLand's blogs</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">TensorFlow学习笔记(7) - 经典CNN模型</h1><div class="post-meta">Aug 22, 2018</div><div class="post-content"><!--# TensorFlow学习笔记(7) - 经典CNN模型-->
 <!-- hexo-inject:begin --><!-- hexo-inject:end --><p>上一节学习了 CNN 的结构 - 卷积层和池化层. 然而通过这些网络结构任意组合得到的神经网络有无限多种, 那么怎样的神经网络更能解决图像问题呢. 大神们已经总结出了几种经典的模型, 通过学习这些模型可以总结出一些 CNN 结构设计的一些模式.</p>
-<h2 id="lenet-5-模型"><a class="markdownIt-Anchor" href="#lenet-5-模型"></a> LeNet-5 模型</h2>
-<p>LeNet-5 模型时 Yann LeCun 教授于1998年在论文 Gradient-based learning applied to document recognition 中提出的. 它是第一个成功应用于数字识问题的 CNN. 在 MNIST 数据集上, LeNet-5 模型可以达到99.2%的正确率.</p>
+<h2 id="LeNet-5-模型"><a href="#LeNet-5-模型" class="headerlink" title="LeNet-5 模型"></a>LeNet-5 模型</h2><p>LeNet-5 模型时 Yann LeCun 教授于1998年在论文 Gradient-based learning applied to document recognition 中提出的. 它是第一个成功应用于数字识问题的 CNN. 在 MNIST 数据集上, LeNet-5 模型可以达到99.2%的正确率.</p>
 <p>LeNet-5模型总共有7层:</p>
-<h5 id="1卷积层"><a class="markdownIt-Anchor" href="#1卷积层"></a> 1.卷积层</h5>
-<ul>
+<h5 id="1-卷积层"><a href="#1-卷积层" class="headerlink" title="1.卷积层"></a>1.卷积层</h5><ul>
 <li>输入层大小 32X32X1.</li>
 <li>过滤器尺寸为 5X5, 深度为 6.</li>
 <li>不使用全0填充</li>
 <li>步长为1.</li>
 </ul>
-<p>由上面数据可以看出, 输出层=32-5+1=28, 深度=6.参数数量=5X5X1X6+6=156.<br>
-输出的节点=28X28X6=4704, 与5X5=25个过滤器(卷积核)上的点连接, 连接数=4704*(25+1)=122304个连接.1是偏置项.</p>
-<h5 id="2池化层"><a class="markdownIt-Anchor" href="#2池化层"></a> 2.池化层</h5>
-<ul>
+<p>由上面数据可以看出, 输出层=32-5+1=28, 深度=6.参数数量=5X5X1X6+6=156.<br>输出的节点=28X28X6=4704, 与5X5=25个过滤器(卷积核)上的点连接, 连接数=4704*(25+1)=122304个连接.1是偏置项.</p>
+<h5 id="2-池化层"><a href="#2-池化层" class="headerlink" title="2.池化层"></a>2.池化层</h5><ul>
 <li>输入 28X28X6.</li>
 <li>过滤器尺寸=2X2, 步长=2</li>
 </ul>
 <p>输出矩阵大小=14X14X6.</p>
-<h5 id="3卷积层"><a class="markdownIt-Anchor" href="#3卷积层"></a> 3.卷积层</h5>
-<ul>
+<h5 id="3-卷积层"><a href="#3-卷积层" class="headerlink" title="3.卷积层"></a>3.卷积层</h5><ul>
 <li>输入 14X14X6.</li>
 <li>过滤器大小 5X5, 深度 16.</li>
 <li>不使用全0填充</li>
 <li>步长为1.</li>
 </ul>
 <p>输出矩阵大小=10X10X16, 参数数量=5X5X6X16+16=2416, 连接数=10X10X16X(5X5+1)=41600个连接</p>
-<h5 id="4-池化层"><a class="markdownIt-Anchor" href="#4-池化层"></a> 4. 池化层</h5>
-<ul>
+<h5 id="4-池化层"><a href="#4-池化层" class="headerlink" title="4. 池化层"></a>4. 池化层</h5><ul>
 <li>输入 10X10X16</li>
 <li>过滤器大小 2X2</li>
 <li>步长 2</li>
 </ul>
 <p>输出 5X5X16.</p>
-<h5 id="5全连接层池化层"><a class="markdownIt-Anchor" href="#5全连接层池化层"></a> 5.全连接层/池化层</h5>
-<p>原论文中是5X5的池化层, 等同于全连接.</p>
+<h5 id="5-全连接层-池化层"><a href="#5-全连接层-池化层" class="headerlink" title="5.全连接层/池化层"></a>5.全连接层/池化层</h5><p>原论文中是5X5的池化层, 等同于全连接.</p>
 <ul>
 <li>输入&amp;输出 5X5X16</li>
 <li>输出节点 120</li>
 </ul>
 <p>参数数量=5X5X16X120+120=48120</p>
-<h5 id="6全连接层"><a class="markdownIt-Anchor" href="#6全连接层"></a> 6.全连接层</h5>
-<ul>
+<h5 id="6-全连接层"><a href="#6-全连接层" class="headerlink" title="6.全连接层"></a>6.全连接层</h5><ul>
 <li>输入节点 120</li>
 <li>输出节点 84</li>
 </ul>
 <p>参数数量=120X84+84=10164</p>
-<h5 id="7全连接层"><a class="markdownIt-Anchor" href="#7全连接层"></a> 7.全连接层</h5>
-<ul>
+<h5 id="7-全连接层"><a href="#7-全连接层" class="headerlink" title="7.全连接层"></a>7.全连接层</h5><ul>
 <li>输入84</li>
 <li>输出 10</li>
 </ul>
@@ -67,10 +58,7 @@
 </ul>
 <p>简单说就是如果移动步长后, 在卷积的时候如果剩下的输入数据不够过滤器的Size, 则差多少Size就填充多少.</p>
 <p>除了 LeNet-5模型, 2012年的 ImageNet ILSVRC 图像分类大赛第一名 AlexNet 模型, 2013年 第一名 ZF Net 模型, 2014年第二名 VGGNet 模型都满足上面7层结构.</p>
-<p>从这些模型中看出, 过滤器尺寸通常在2~3,一般不超过5,少有的一些会使用到7甚至11.<br>
-深度上, 大多都采用逐层递增或乘以2.<br>
-卷积层步长一般为1, 有的为2~3.<br>
-池化层尺寸和步长一般都为2~3.</p>
+<p>从这些模型中看出, 过滤器尺寸通常在2~3,一般不超过5,少有的一些会使用到7甚至11.<br>深度上, 大多都采用逐层递增或乘以2.<br>卷积层步长一般为1, 有的为2~3.<br>池化层尺寸和步长一般都为2~3.</p>
 <p>TensorFlow 编码时, 卷积层和池化层实现和上一节学习的一样的, 需要注意的是在第二个池化结束后, 输出的是一个 <code>Height x Width x Deep</code> 的矩阵, 第一个全连接层输入需要的是一个向量, 所以这里需要将矩阵拉直成一个向量.</p>
 <ul>
 <li><code>pool2.get_shape</code> 可以得到矩阵的维度.</li>
@@ -78,9 +66,7 @@
 <li><code>tf.reshape</code> 可以将输出编程一个 batch 的向量.</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ... 略</span></span><br><span class="line">pool2 = 第二个池化层输出</span><br><span class="line"><span class="comment"># 得到维度信息 如 Batch x Heiht x Width x Deep/Channel</span></span><br><span class="line"><span class="comment"># as_list() 转 list</span></span><br><span class="line">pool_shape = pool2.get_shape().as_list()</span><br><span class="line">nodes = pool_shape[<span class="number">1</span>] * pool_shape[<span class="number">2</span>] * pool_shape[<span class="number">3</span>]</span><br><span class="line"><span class="comment"># 将四维的输出编程一维向量</span></span><br><span class="line">reshaped = tf.reshape(pool2, [pool_shape[<span class="number">0</span>], nodes])</span><br><span class="line"><span class="comment"># 之后就是全连接一样的传播方法</span></span><br><span class="line"><span class="comment"># ... 略</span></span><br></pre></td></tr></table></figure>
-<h2 id="inception-v3模型"><a class="markdownIt-Anchor" href="#inception-v3模型"></a> Inception-v3模型</h2>
-<p>Inception 结构和 LeNet-5结构完成不同.<br>
-在 LeNet-5 中, 不同卷积层通过串联连接在一起, 而 Inception-v3模型中的 Inception 结构是并联的方式结合在一起.</p>
+<h2 id="Inception-v3模型"><a href="#Inception-v3模型" class="headerlink" title="Inception-v3模型"></a>Inception-v3模型</h2><p>Inception 结构和 LeNet-5结构完成不同.<br>在 LeNet-5 中, 不同卷积层通过串联连接在一起, 而 Inception-v3模型中的 Inception 结构是并联的方式结合在一起.</p>
 <p>简单说就是 输入矩阵-&gt;多个尺寸的过滤器-&gt;输出的结果组合成一个更深的矩阵.多个过滤器使用1步长和0填充,就保证了输出的矩阵大小不变.</p>
 <p>合并使用函数<code>tf.concat</code>.</p>
 <p>Inception-v3 模型总共46层, 由11个 Inception 模块组成, Inception-v3一共有96个卷积层. 如果按照之前卷积层的实现代码, 一个 Inception 结构就需要至少5行代码. 总共需要480行代码实现.</p>
@@ -98,7 +84,7 @@
   },
 })
 gitment.render('container')
-</script></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://grayland119.github.io"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Xcode/">Xcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/ReactiveCocoa/" style="font-size: 15px;">ReactiveCocoa</a> <a href="/tags/Runtime/" style="font-size: 15px;">Runtime</a> <a href="/tags/iOS/" style="font-size: 15px;">iOS</a> <a href="/tags/Xcode/" style="font-size: 15px;">Xcode</a> <a href="/tags/lldb/" style="font-size: 15px;">lldb</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/Objc/" style="font-size: 15px;">Objc</a> <a href="/tags/OpenCV/" style="font-size: 15px;">OpenCV</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/iOS逆向/" style="font-size: 15px;">iOS逆向</a> <a href="/tags/iOS轮子/" style="font-size: 15px;">iOS轮子</a> <a href="/tags/TensorFlow/" style="font-size: 15px;">TensorFlow</a> <a href="/tags/iOS规范/" style="font-size: 15px;">iOS规范</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/tfln9/">TensorFlow学习笔记(9) - 图像处理数据</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/tfln8/">TensorFlow学习笔记(8) - 迁移学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/tfln7/">TensorFlow学习笔记(7) - 经典CNN模型</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/tfln6/">TensorFlow学习笔记(6) - CNN</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/tfln5/">TensorFlow学习笔记(5) - 完善手写体识别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/tfln4/">TensorFlow学习笔记(4) - 持久化原理及数据格式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/tfln3/">TensorFlow学习笔记(3) - 模型持久化</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/tfln2/">TensorFlow 学习笔记(2)-手写体识别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/tfln1/">TensorFlow 学习笔记(1)-基础相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/iosclrs/">iOS崩溃日志符号还原</a></li></ul></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">GrayLand's blogs.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+</script></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://grayland119.github.io"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Xcode/">Xcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/iOS/" style="font-size: 15px;">iOS</a> <a href="/tags/Objc/" style="font-size: 15px;">Objc</a> <a href="/tags/Xcode/" style="font-size: 15px;">Xcode</a> <a href="/tags/ReactiveCocoa/" style="font-size: 15px;">ReactiveCocoa</a> <a href="/tags/lldb/" style="font-size: 15px;">lldb</a> <a href="/tags/Runtime/" style="font-size: 15px;">Runtime</a> <a href="/tags/iOS逆向/" style="font-size: 15px;">iOS逆向</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/OpenCV/" style="font-size: 15px;">OpenCV</a> <a href="/tags/iOS轮子/" style="font-size: 15px;">iOS轮子</a> <a href="/tags/TensorFlow/" style="font-size: 15px;">TensorFlow</a> <a href="/tags/iOS规范/" style="font-size: 15px;">iOS规范</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/tfln10/">TensorFlow学习笔记(10) - 队列与多线程及输入数据框架</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/tfln9/">TensorFlow学习笔记(9) - 图像处理数据</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/tfln8/">TensorFlow学习笔记(8) - 迁移学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/tfln7/">TensorFlow学习笔记(7) - 经典CNN模型</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/tfln6/">TensorFlow学习笔记(6) - CNN</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/tfln5/">TensorFlow学习笔记(5) - 完善手写体识别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/tfln4/">TensorFlow学习笔记(4) - 持久化原理及数据格式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/tfln3/">TensorFlow学习笔记(3) - 模型持久化</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/tfln2/">TensorFlow 学习笔记(2)-手写体识别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/tfln1/">TensorFlow 学习笔记(1)-基础相关</a></li></ul></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">GrayLand's blogs.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
   tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
   });
 </script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div><!-- hexo-inject:begin --><!-- hexo-inject:end --></body></html>
