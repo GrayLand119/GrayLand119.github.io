@@ -5,7 +5,10 @@
   var s = document.getElementsByTagName("script")[0];
   s.parentNode.insertBefore(hm, s);
   })();</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">iOS使用dumpdecrypted砸壳笔记</h1><a id="logo" href="/.">GrayLand's blogs</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">iOS使用dumpdecrypted砸壳笔记</h1><div class="post-meta">Aug 14, 2017</div><div class="post-content"><!--# iOS使用dumpdecrypted砸壳笔记-->
-<!-- hexo-inject:begin --><!-- hexo-inject:end --><h2 id="Cydia-安装-OpenSSH"><a href="#Cydia-安装-OpenSSH" class="headerlink" title="Cydia 安装 OpenSSH"></a>Cydia 安装 OpenSSH</h2><h2 id="Cydia-安装-Cycript"><a href="#Cydia-安装-Cycript" class="headerlink" title="Cydia 安装 Cycript"></a>Cydia 安装 Cycript</h2><h2 id="SSH-到手机"><a href="#SSH-到手机" class="headerlink" title="SSH 到手机"></a>SSH 到手机</h2><blockquote>
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><h2 id="cydia-安装-openssh"><a class="markdownIt-Anchor" href="#cydia-安装-openssh"></a> Cydia 安装 OpenSSH</h2>
+<h2 id="cydia-安装-cycript"><a class="markdownIt-Anchor" href="#cydia-安装-cycript"></a> Cydia 安装 Cycript</h2>
+<h2 id="ssh-到手机"><a class="markdownIt-Anchor" href="#ssh-到手机"></a> SSH 到手机</h2>
+<blockquote>
 <p>ssh root@<code>手机IP地址</code></p>
 </blockquote>
 <p>初始密码:</p>
@@ -24,21 +27,25 @@
 <blockquote>
 <p>ps -e | grew <code>AppName</code></p>
 </blockquote>
-<h2 id="执行-su-mobile"><a href="#执行-su-mobile" class="headerlink" title="执行 su mobile"></a>执行 su mobile</h2><p>如果砸壳出现 killed 9 错误, 请先执行:</p>
+<h2 id="执行-su-mobile"><a class="markdownIt-Anchor" href="#执行-su-mobile"></a> 执行 su mobile</h2>
+<p>如果砸壳出现 killed 9 错误, 请先执行:</p>
 <blockquote>
 <p>su mobile</p>
 </blockquote>
-<h2 id="附加到进程"><a href="#附加到进程" class="headerlink" title="附加到进程"></a>附加到进程</h2><p>使用 <code>Cycript</code> 工具, 附加到进程, 可以使用 <code>Cycript</code>下的 <code>JS-ObjectiveC</code> 语言进行调试.</p>
+<h2 id="附加到进程"><a class="markdownIt-Anchor" href="#附加到进程"></a> 附加到进程</h2>
+<p>使用 <code>Cycript</code> 工具, 附加到进程, 可以使用 <code>Cycript</code>下的 <code>JS-ObjectiveC</code> 语言进行调试.</p>
 <p>执行命令:</p>
 <blockquote>
 <p>cycript -p <code>AppName</code></p>
 </blockquote>
 <p>例如:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 弹出Alert窗口</span><br><span class="line">[[[UIAlertView alloc]initWithTitle:@&quot;Notice&quot; message:@&quot;debug&quot; delegate:ni cancelButtonTitle:@&quot;ok&quot; otherButtonTitles:nil, nil] show]</span><br><span class="line">// 获取对象</span><br><span class="line">var delegate = UIApp.delegate</span><br><span class="line">var window = delegate.window</span><br><span class="line">var rootVC = window.rootViewController</span><br><span class="line">// 获取沙盒目录</span><br><span class="line">[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask][0]</span><br></pre></td></tr></table></figure>
-<h2 id="拷贝-dumpdecrypted-dylib-到应用沙盒目录"><a href="#拷贝-dumpdecrypted-dylib-到应用沙盒目录" class="headerlink" title="拷贝 dumpdecrypted.dylib 到应用沙盒目录"></a>拷贝 dumpdecrypted.dylib 到应用沙盒目录</h2><blockquote>
+<h2 id="拷贝-dumpdecrypteddylib-到应用沙盒目录"><a class="markdownIt-Anchor" href="#拷贝-dumpdecrypteddylib-到应用沙盒目录"></a> 拷贝 dumpdecrypted.dylib 到应用沙盒目录</h2>
+<blockquote>
 <p>scp <code>dumpdecrypted.dylib路径</code> <code>沙盒路径</code></p>
 </blockquote>
-<h2 id="开始砸壳"><a href="#开始砸壳" class="headerlink" title="开始砸壳"></a>开始砸壳</h2><p>切换到沙盒目录下:</p>
+<h2 id="开始砸壳"><a class="markdownIt-Anchor" href="#开始砸壳"></a> 开始砸壳</h2>
+<p>切换到沙盒目录下:</p>
 <blockquote>
 <p>cd <code>沙盒目录</code></p>
 </blockquote>
@@ -54,22 +61,28 @@
 <blockquote>
 <p>otool -l <code>App.decrypted</code> | grep crypt</p>
 </blockquote>
-<h2 id="class-dump-导出头文件"><a href="#class-dump-导出头文件" class="headerlink" title="class-dump 导出头文件"></a>class-dump 导出头文件</h2><blockquote>
+<h2 id="class-dump-导出头文件"><a class="markdownIt-Anchor" href="#class-dump-导出头文件"></a> class-dump 导出头文件</h2>
+<blockquote>
 <p>class-dump -H spacewalk.decrypted -o output/</p>
 </blockquote>
-<h2 id="查看架构"><a href="#查看架构" class="headerlink" title="查看架构"></a>查看架构</h2><blockquote>
+<h2 id="查看架构"><a class="markdownIt-Anchor" href="#查看架构"></a> 查看架构</h2>
+<blockquote>
 <p>lipo -info XXXX.framework/XXXX</p>
 </blockquote>
-<h2 id="分离合并架构"><a href="#分离合并架构" class="headerlink" title="分离合并架构"></a>分离合并架构</h2><p>首先从framework中分离出armv7 arm64，或者还有armv7s</p>
+<h2 id="分离合并架构"><a class="markdownIt-Anchor" href="#分离合并架构"></a> 分离合并架构</h2>
+<p>首先从framework中分离出armv7 arm64，或者还有armv7s</p>
 <blockquote>
 <p>lipo XXXX.framework/XXXX -thin arm64 -output XXXX.framework/XXXX-arm64</p>
+</blockquote>
+<blockquote>
 <p>lipo XXXX.framework/XXXX -thin armv7 -output XXXX.framework/XXXX-armv7</p>
 </blockquote>
 <p>然后合并分离出的两种架构</p>
 <blockquote>
 <p>lipo -create XXXX.framework/XXXX-armv7 XXXX.framework/XXXX-arm64 -output XXXX.framework/XXXX</p>
 </blockquote>
-<h2 id="Cycript-使用"><a href="#Cycript-使用" class="headerlink" title="Cycript 使用"></a>Cycript 使用</h2><p>加载到进程:</p>
+<h2 id="cycript-使用"><a class="markdownIt-Anchor" href="#cycript-使用"></a> Cycript 使用</h2>
+<p>加载到进程:</p>
 <blockquote>
 <p>cycript -p xxxx</p>
 </blockquote>
@@ -82,4 +95,4 @@
   },
 })
 gitment.render('container')
-</script></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://grayland119.github.io"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Xcode/">Xcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/iOS/" style="font-size: 15px;">iOS</a> <a href="/tags/Objc/" style="font-size: 15px;">Objc</a> <a href="/tags/Xcode/" style="font-size: 15px;">Xcode</a> <a href="/tags/ReactiveCocoa/" style="font-size: 15px;">ReactiveCocoa</a> <a href="/tags/lldb/" style="font-size: 15px;">lldb</a> <a href="/tags/Runtime/" style="font-size: 15px;">Runtime</a> <a href="/tags/iOS逆向/" style="font-size: 15px;">iOS逆向</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/OpenCV/" style="font-size: 15px;">OpenCV</a> <a href="/tags/iOS轮子/" style="font-size: 15px;">iOS轮子</a> <a href="/tags/TensorFlow/" style="font-size: 15px;">TensorFlow</a> <a href="/tags/iOS规范/" style="font-size: 15px;">iOS规范</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/tfln10/">TensorFlow学习笔记(10) - 队列与多线程及输入数据框架</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/tfln9/">TensorFlow学习笔记(9) - 图像处理数据</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/tfln8/">TensorFlow学习笔记(8) - 迁移学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/tfln7/">TensorFlow学习笔记(7) - 经典CNN模型</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/tfln6/">TensorFlow学习笔记(6) - CNN</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/tfln5/">TensorFlow学习笔记(5) - 完善手写体识别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/tfln4/">TensorFlow学习笔记(4) - 持久化原理及数据格式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/tfln3/">TensorFlow学习笔记(3) - 模型持久化</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/tfln2/">TensorFlow 学习笔记(2)-手写体识别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/tfln1/">TensorFlow 学习笔记(1)-基础相关</a></li></ul></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">GrayLand's blogs.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div><!-- hexo-inject:begin --><!-- hexo-inject:end --></body></html>
+</script></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://grayland119.github.io"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Xcode/">Xcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/OpenCV/" style="font-size: 15px;">OpenCV</a> <a href="/tags/Runtime/" style="font-size: 15px;">Runtime</a> <a href="/tags/iOS/" style="font-size: 15px;">iOS</a> <a href="/tags/Xcode/" style="font-size: 15px;">Xcode</a> <a href="/tags/lldb/" style="font-size: 15px;">lldb</a> <a href="/tags/ReactiveCocoa/" style="font-size: 15px;">ReactiveCocoa</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/Objc/" style="font-size: 15px;">Objc</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/iOS逆向/" style="font-size: 15px;">iOS逆向</a> <a href="/tags/iOS轮子/" style="font-size: 15px;">iOS轮子</a> <a href="/tags/TensorFlow/" style="font-size: 15px;">TensorFlow</a> <a href="/tags/iOS-TensorFlow-CoreML-Vision/" style="font-size: 15px;">iOS, TensorFlow, CoreML, Vision</a> <a href="/tags/Other/" style="font-size: 15px;">Other</a> <a href="/tags/iOS规范/" style="font-size: 15px;">iOS规范</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/zisbsyxtfm/">在 iOS 设备上运行 TensorFlow 中训练好的模型</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/hexosimg/">Hexo 配置图文方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/tfln10/">TensorFlow学习笔记(10) - 队列与多线程及输入数据框架</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/tfln9/">TensorFlow学习笔记(9) - 图像处理数据</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/tfln8/">TensorFlow学习笔记(8) - 迁移学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/tfln7/">TensorFlow学习笔记(7) - 经典CNN模型</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/tfln6/">TensorFlow学习笔记(6) - CNN</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/tfln5/">TensorFlow学习笔记(5) - 完善手写体识别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/tfln4/">TensorFlow学习笔记(4) - 持久化原理及数据格式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/tfln3/">TensorFlow学习笔记(3) - 模型持久化</a></li></ul></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">GrayLand's blogs.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div><!-- hexo-inject:begin --><!-- hexo-inject:end --></body></html>
